@@ -15,6 +15,11 @@ const adapter = new BotFrameworkAdapter({
   appPassword: ''
 });
 
+adapter.onTurnError = async (context, error) => {
+  console.error(error);
+  await context.sendActivity('Ups algo salio mal');
+};
+
 const bot = new EchoBot();
 
 // Listen for incoming requests.
